@@ -1,4 +1,6 @@
+import 'package:batch_student_objbox_api/app/network_connectivity.dart';
 import 'package:batch_student_objbox_api/data_source/local_data_source/course_data_source.dart';
+import 'package:batch_student_objbox_api/data_source/remote_data_source/course_data_source.dart';
 import 'package:batch_student_objbox_api/model/student.dart';
 
 import '../model/course.dart';
@@ -12,12 +14,17 @@ abstract class CourseRepository {
 
 class CourseRepositoryImpl extends CourseRepository {
   @override
-  Future<int> addCourse(Course course) {
+  Future<int> addCourse(Course course) async {
+    bool status = await NetworkConnectivity.isOnline();
+    // if (status) return CourseRemoteDataSource().addCourse(course);
     return CourseDataSource().addCourse(course);
   }
 
   @override
   Future<List<Course>> getAllCourse() async {
+    bool status = await NetworkConnectivity.isOnline();
+    print(status);
+    if (status) return CourseRemoteDataSource().getAllCourse();
     return CourseDataSource().getAllCourse();
   }
 

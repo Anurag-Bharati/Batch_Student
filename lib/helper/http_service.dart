@@ -1,6 +1,5 @@
 import 'package:batch_student_objbox_api/app/constants.dart';
 import 'package:dio/dio.dart';
-import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
 class HttpServices {
   static final HttpServices _instance = HttpServices._internal();
@@ -27,8 +26,8 @@ class HttpServices {
         headers: headers,
       ),
     );
-    _dio!.interceptors.add(PrettyDioLogger(
-        requestHeader: true, requestBody: true, responseHeader: true));
+    // _dio!.interceptors.add(PrettyDioLogger(
+    //     requestHeader: true, requestBody: true, responseHeader: true));
     return _dio!;
   }
 }

@@ -21,8 +21,8 @@ class ObjectBoxInstance {
   void insertBatches() {
     List<Batch> lstBatches = getAllBatch();
     if (lstBatches.isEmpty) {
-      addBatch(Batch('29-A'));
-      addBatch(Batch('29-B'));
+      // addBatch(Batch('29-A'));
+      // addBatch(Batch('29-B'));
     }
   }
 
